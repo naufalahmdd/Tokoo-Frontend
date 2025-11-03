@@ -1,6 +1,7 @@
 "use client";
 
-import BannerCarousel from "@/components/composites/BannerCarousel";
+
+import BannerCarousel from "@/components/composites/Carousel/BannerCarousel";
 import Image from "next/image";
 import Link from "next/link";
 
