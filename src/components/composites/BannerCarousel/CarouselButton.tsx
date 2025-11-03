@@ -15,7 +15,7 @@ const CarouselButton = forwardRef<HTMLButtonElement, CarouselButtonProps>(
         ref={ref}
         variant="outline"
         size="icon-lg"
-        className={`absolute top-1/2 z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${className}`}
+        className={`absolute top-[40%] z-10 rounded-full ${className}`}
       >
         {children}
       </Button>

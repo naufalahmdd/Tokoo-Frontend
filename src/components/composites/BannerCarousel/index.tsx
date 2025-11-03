@@ -21,7 +21,7 @@ export default function BannerCarousel({ images }: BannerCarouselProps) {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="relative w-full mx-auto px-[5%] lg:max-w-340 group">
+    <div className="relative w-full mx-auto group">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={{ clickable: true }}
@@ -62,10 +62,10 @@ export default function BannerCarousel({ images }: BannerCarouselProps) {
         ))}
       </Swiper>
 
-      <CarouselButton ref={prevRef} className="left-10">
+      <CarouselButton ref={prevRef} className="left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <ChevronLeft />
       </CarouselButton>
-      <CarouselButton ref={nextRef} className="right-10">
+      <CarouselButton ref={nextRef} className="right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <ChevronRight />
       </CarouselButton>
     </div>
