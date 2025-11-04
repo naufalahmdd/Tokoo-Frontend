@@ -14,7 +14,6 @@ export default function BannerCarousel({ images }: BannerCarouselProps) {
     <div className="relative w-full mx-auto group">
       <BaseCarousel
         pagination={true}
-        navigation={true}
         autoplay={true}
         loop={true}
         spaceBetween={20}

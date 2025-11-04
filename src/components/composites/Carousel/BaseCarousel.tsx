@@ -15,7 +15,6 @@ type BaseCarouselProps = {
   children: React.ReactNode;
   autoplay?: boolean;
   pagination?: boolean;
-  navigation?: boolean;
   loop?: boolean;
   spaceBetween?: number;
   centeredSlides?: boolean;
@@ -28,7 +27,6 @@ export default function BaseCarousel(props: BaseCarouselProps) {
     children,
     autoplay = true,
     pagination = true,
-    navigation = true,
     loop = true,
     spaceBetween = 16,
     centeredSlides = false,
@@ -38,7 +36,7 @@ export default function BaseCarousel(props: BaseCarouselProps) {
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   return (
-    <div className="relative w-full mx-auto group">
+    <div className={`relative w-full mx-auto group ${className}`}>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         pagination={pagination ? { clickable: true } : false}
@@ -60,26 +58,23 @@ export default function BaseCarousel(props: BaseCarouselProps) {
             swiper.navigation.update();
           }
         }}
-        className={className}
+        className="w-full"
       >
         {children}
       </Swiper>
-      {navigation && (
-        <>
-          <CarouselButton
-            ref={prevRef}
-            className="left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <ChevronLeft />
-          </CarouselButton>
-          <CarouselButton
-            ref={nextRef}
-            className="right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <ChevronRight />
-          </CarouselButton>
-        </>
-      )}
+
+      <CarouselButton
+        ref={prevRef}
+        className="left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <ChevronLeft />
+      </CarouselButton>
+      <CarouselButton
+        ref={nextRef}
+        className="right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      >
+        <ChevronRight />
+      </CarouselButton>
     </div>
   );
 }

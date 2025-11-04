@@ -20,7 +20,7 @@ const locations = [
 
 export default function NavbarActions() {
   return (
-    <div className="flex justify-between gap-5 items-center w-full">
+    <div className="flex justify-between items-center gap-5 w-full">
       <div className="flex items-center gap-2 lg:gap-8 w-full">
         <div className="flex items-center">
           <NavbarMenuItemsMobile locations={locations} />
@@ -51,9 +51,7 @@ export default function NavbarActions() {
         </Button>
       </div>
 
-      <div className="flex items-center">
-        <AuthButton />
-      </div>
+      <AuthButton />
     </div>
   );
 }
