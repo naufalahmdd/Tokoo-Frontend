@@ -23,6 +23,4 @@ const CarouselButton = forwardRef<HTMLButtonElement, CarouselButtonProps>(
   }
 );
 
-CarouselButton.displayName = "CarouselButton";
-
 export default CarouselButton;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Swiper } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -35,6 +35,22 @@ export default function BaseCarousel(props: BaseCarouselProps) {
   } = props;
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  const swiperRef = useRef<any>(null)
+
+  useEffect(() => {
+    if (
+      swiperRef.current &&
+      prevRef.current &&
+      nextRef.current &&
+      swiperRef.current.params
+    ) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
+
   return (
     <div className={`relative w-full mx-auto group ${className}`}>
       <Swiper
@@ -49,15 +65,7 @@ export default function BaseCarousel(props: BaseCarouselProps) {
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
-        onSwiper={(swiper) => {
-          if (prevRef.current && nextRef.current) {
-            const nav = swiper.params.navigation as NavigationOptions;
-            nav.prevEl = prevRef.current;
-            nav.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }
-        }}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         className="w-full"
       >
         {children}
