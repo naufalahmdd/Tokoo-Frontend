@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { SwiperOptions } from "swiper/types";
-import { NavigationOptions } from "swiper/types";
 import CarouselButton from "./CarouselButton";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -15,6 +14,7 @@ type BaseCarouselProps = {
   children: React.ReactNode;
   autoplay?: boolean;
   pagination?: boolean;
+  navigation?: boolean;
   loop?: boolean;
   spaceBetween?: number;
   centeredSlides?: boolean;
@@ -27,6 +27,7 @@ export default function BaseCarousel(props: BaseCarouselProps) {
     children,
     autoplay = true,
     pagination = true,
+    navigation = true,
     loop = true,
     spaceBetween = 16,
     centeredSlides = false,
@@ -35,7 +36,7 @@ export default function BaseCarousel(props: BaseCarouselProps) {
   } = props;
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const swiperRef = useRef<any>(null)
+  const swiperRef = useRef<any>(null);
 
   useEffect(() => {
     if (
@@ -71,18 +72,22 @@ export default function BaseCarousel(props: BaseCarouselProps) {
         {children}
       </Swiper>
 
-      <CarouselButton
-        ref={prevRef}
-        className="left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      >
-        <ChevronLeft />
-      </CarouselButton>
-      <CarouselButton
-        ref={nextRef}
-        className="right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      >
-        <ChevronRight />
-      </CarouselButton>
+      {navigation && (
+        <>
+          <CarouselButton
+            ref={prevRef}
+            className="left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <ChevronLeft />
+          </CarouselButton>
+          <CarouselButton
+            ref={nextRef}
+            className="right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <ChevronRight />
+          </CarouselButton>
+        </>
+      )}
     </div>
   );
 }

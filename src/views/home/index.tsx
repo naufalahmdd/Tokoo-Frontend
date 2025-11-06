@@ -137,6 +137,69 @@ export default function HomeView() {
         </h3>
         <ProductCarousel recomendationProducts={recomendationProducts} />
       </section>
+      {/* Pendatang Baru */}
+      <section className="flex flex-col gap-8 lg:gap-10 w-full mt-7 lg:mt-14">
+        <h3 className="text-2xl lg:text-3xl">
+          Pendatang <span className="font-bold">Baru</span>
+        </h3>
+        <ProductCarousel recomendationProducts={recomendationProducts} />
+      </section>
+      {/* Dari Mata ke Hati */}
+      <section className="flex flex-col gap-8 lg:gap-10 w-full mt-7 lg:mt-14">
+        <h3 className="text-2xl font-bold lg:text-3xl">
+          Dari Mata <span className="font-normal">ke Hati</span>
+        </h3>
+        <ul className="flex items-center gap-8">
+          <Link href="" className="">
+            <li className="flex flex-col items-center gap-3">
+              <Image
+                src="/tren_terkini.webp"
+                alt="tren terkini"
+                width={150}
+                height={150}
+                className="rounded-full"
+              />
+              <p className="text-center text-xs md:text-sm font-medium">Tren terkini</p>
+            </li>
+          </Link>
+          <Link href="" className="">
+            <li className="flex flex-col items-center gap-3">
+              <Image
+                src="/upgrade_gadget.webp"
+                alt="Upgrade Gadget"
+                width={150}
+                height={150}
+                className="rounded-full"
+              />
+              <p className="text-center text-xs md:text-sm font-medium">Upgrade Gadget</p>
+            </li>
+          </Link>
+          <Link href="" className="">
+            <li className="flex flex-col items-center gap-3">
+              <Image
+                src="/mobil_bekas.webp"
+                alt="Mobil Bekas"
+                width={150}
+                height={150}
+                className="rounded-full"
+              />
+              <p className="text-center text-xs md:text-sm font-medium">Mobil Bekas</p>
+            </li>
+          </Link>
+          <Link href="" className="">
+            <li className="flex flex-col items-center gap-3">
+              <Image
+                src="/hunian_impian.webp"
+                alt="Hunian Impian"
+                width={150}
+                height={150}
+                className="rounded-full"
+              />
+              <p className="text-center text-xs md:text-sm font-medium">Property</p>
+            </li>
+          </Link>
+        </ul>
+      </section>
     </main>
   );
 }

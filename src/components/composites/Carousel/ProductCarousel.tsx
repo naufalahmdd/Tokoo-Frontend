@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import BaseCarousel from "./BaseCarousel";
 import CardProduct from "../CardProduct";
@@ -18,9 +19,24 @@ export default function ProductCarousel({
 }: {
   recomendationProducts: RecomendationProductsProps[];
 }) {
+  const [navigation, setNavigation] = useState<boolean>(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if(window.innerWidth < 1024) {
+        setNavigation(false)
+      }
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+  
   return (
     <BaseCarousel
       pagination={false}
+      navigation={navigation}
       autoplay={false}
       loop={false}
       spaceBetween={20}
