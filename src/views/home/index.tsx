@@ -104,6 +104,21 @@ const recomendationProducts = [
   },
 ];
 
+const vouchers = [
+  {
+    title: "Gratis Ongkir",
+    expedition: "J&T",
+  },
+  {
+    title: "Gratis Ongkir",
+    expedition: "SiCepat",
+  },
+  {
+    title: "Gratis Ongkir",
+    expedition: "JNE",
+  },
+];
+
 export default function HomeView() {
   return (
     <main className="w-full max-w-[1440px] mx-auto px-[5%] my-14 pt-10 lg:pt-24">
@@ -159,7 +174,9 @@ export default function HomeView() {
                 height={150}
                 className="rounded-full"
               />
-              <p className="text-center text-xs md:text-sm font-medium">Tren terkini</p>
+              <p className="text-center text-xs md:text-sm font-medium">
+                Tren terkini
+              </p>
             </li>
           </Link>
           <Link href="" className="">
@@ -171,7 +188,9 @@ export default function HomeView() {
                 height={150}
                 className="rounded-full"
               />
-              <p className="text-center text-xs md:text-sm font-medium">Upgrade Gadget</p>
+              <p className="text-center text-xs md:text-sm font-medium">
+                Upgrade Gadget
+              </p>
             </li>
           </Link>
           <Link href="" className="">
@@ -183,7 +202,9 @@ export default function HomeView() {
                 height={150}
                 className="rounded-full"
               />
-              <p className="text-center text-xs md:text-sm font-medium">Mobil Bekas</p>
+              <p className="text-center text-xs md:text-sm font-medium">
+                Mobil Bekas
+              </p>
             </li>
           </Link>
           <Link href="" className="">
@@ -195,9 +216,39 @@ export default function HomeView() {
                 height={150}
                 className="rounded-full"
               />
-              <p className="text-center text-xs md:text-sm font-medium">Property</p>
+              <p className="text-center text-xs md:text-sm font-medium">
+                Property
+              </p>
             </li>
           </Link>
+        </ul>
+      </section>
+      <section className="flex flex-col gap-8 lg:gap-10 w-full mt-10 lg:mt-14">
+        <h3 className="text-2xl lg:text-3xl">
+          Buruan Klaim <span className="font-bold">Promonya!</span>
+        </h3>
+        <ul className="flex items-center gap-4 overflow-auto py-4">
+          {vouchers.map((voucher) => (
+            <li
+              key={voucher.expedition}
+              className="cursor-pointer w-full max-w-sm border border-dashed border-yellow-400 bg-yellow-100 rounded-lg p-2"
+            >
+              <div className="flex items-center gap-3 w-sm">
+                <Image
+                  src="/free-shipping.svg"
+                  alt="Ilustration Free Shipping"
+                  width={120}
+                  height={120}
+                  className=""
+                />
+                <div className="flex flex-col gap-1">
+                  <p className="text-xs text-yellow-950">November Hemat dengan {voucher.expedition}</p>
+                  <span className="text-lg font-bold">{voucher.title}</span>
+                  <p className="text-xs text-yellow-400">s/d 09 NOv 2025</p>
+                </div>
+              </div>
+            </li>
+          ))}
         </ul>
       </section>
     </main>
