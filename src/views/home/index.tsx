@@ -68,15 +68,15 @@ const recomendationProducts = [
     city: "Kota Bandung",
     stock: 1,
     price: 26_500_000,
-    img: "/iphone-product.webp",
+    img: "/macbook.webp",
   },
   {
     id: 3,
-    title: "Macbook Pro M4 Pro",
-    city: "Kota Bandung",
-    stock: 1,
-    price: 26_500_000,
-    img: "/iphone-product.webp",
+    title: "iPad Pro M5",
+    city: "Kota Jakarta Selatan",
+    stock: 2,
+    price: 17_999_000,
+    img: "/ipad.webp",
   },
   {
     id: 4,
@@ -250,6 +250,12 @@ export default function HomeView() {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="flex flex-col gap-8 lg:gap-10 w-full mt-7 lg:mt-14">
+        <h3 className="text-2xl lg:text-3xl">
+          Cek Produk <span className="font-bold">Favorit Tokoo!</span>
+        </h3>
+        <ProductCarousel recomendationProducts={recomendationProducts} />
       </section>
     </main>
   );
