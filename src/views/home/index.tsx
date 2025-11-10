@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { SwiperSlide } from "swiper/react";
 import BannerCarousel from "@/components/composites/Carousel/BannerCarousel";
 import ProductCarousel from "@/components/composites/Carousel/ProductCarousel";
+import BaseCarousel from "@/components/composites/Carousel/BaseCarousel";
 
 const bannerImages = [
   "/banner-1.webp",
@@ -116,6 +118,34 @@ const vouchers = [
   {
     title: "Gratis Ongkir",
     expedition: "JNE",
+  },
+];
+
+const brands = [
+  {
+    id: 1,
+    href: "/",
+    img: "/1-Brand-Banner-Volstice.webp",
+  },
+  {
+    id: 2,
+    href: "/",
+    img: "/2-Brand-Banner-LifeBehindBars.webp",
+  },
+  {
+    id: 3,
+    href: "/",
+    img: "/3-Brand-Banner-Solaine.webp",
+  },
+  {
+    id: 4,
+    href: "/",
+    img: "/4-Brand-Banner-Slank.webp",
+  },
+  {
+    id: 5,
+    href: "/",
+    img: "/5-Brand-Banner-Orinoco.webp",
   },
 ];
 
@@ -242,7 +272,9 @@ export default function HomeView() {
                   className=""
                 />
                 <div className="flex flex-col gap-1">
-                  <p className="text-xs text-yellow-950">November Hemat dengan {voucher.expedition}</p>
+                  <p className="text-xs text-yellow-950">
+                    November Hemat dengan {voucher.expedition}
+                  </p>
                   <span className="text-lg font-bold">{voucher.title}</span>
                   <p className="text-xs text-yellow-400">s/d 09 NOv 2025</p>
                 </div>
@@ -256,6 +288,42 @@ export default function HomeView() {
           Cek Produk <span className="font-bold">Favorit Tokoo!</span>
         </h3>
         <ProductCarousel recomendationProducts={recomendationProducts} />
+      </section>
+
+      <section className="flex flex-col gap-8 lg:gap-10 w-full mt-7 lg:mt-14">
+        <h3 className="text-2xl lg:text-3xl">
+          Brand <span className="font-bold">Pilihan</span>
+        </h3>
+        <div className="relative w-full mx-auto group">
+          <BaseCarousel
+            pagination={true}
+            navigation={true}
+            autoplay={false}
+            loop={false}
+            spaceBetween={20}
+            centeredSlides={false}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              800: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="w-full"
+          >
+            {brands.map((brand, i) => (
+              <SwiperSlide key={i}>
+                <Link href={brand.href}>
+                  <Image
+                    src={brand.img}
+                    alt="Banner Brand"
+                    width={500}
+                    height={256}
+                    className="w-full h-full object-cover"
+                  />
+                </Link>
+              </SwiperSlide>
+            ))}
+          </BaseCarousel>
+        </div>
       </section>
     </main>
   );
